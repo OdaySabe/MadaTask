@@ -1,0 +1,15 @@
+{% extends 'mainpage.html' %} {% block otherpages %}
+<h1>List all services</h1>
+<div class="coustomerdetails">
+  {% for ServiceName, Coustomers in List.items %}
+  <h1>{{ServiceName}}</h1>
+  <span>{{Coustomers|length}} Coustomers</span>
+  {% for Coustomer in Coustomers %}
+  <p>
+    <strong>{{Coustomer.name}}</strong> {{Coustomer.phonenumber}}
+    {{Coustomer.city}}
+  </p>
+
+  {% endfor %} {% endfor %}
+</div>
+{% endblock otherpages %}

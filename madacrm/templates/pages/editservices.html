@@ -1,0 +1,46 @@
+{% extends 'mainpage.html' %} {% block otherpages %}
+<h2>{{Coustomer.name}}</h2>
+<div class="sCoustomer">
+  <h2>{{Coustomer.name}}</h2>
+  <p>lives in {{Coustomer.city}}</p>
+  <p>phone number : number {{Coustomer.phonenumber}}</p>
+</div>
+<h2>Coustomer services</h2>
+<div class="editCoustomerServices">
+  {% for service in CoustomerServices %}
+  <div class="editCoustomerServicesCell">
+    {{service.name}}
+    <ul>
+      <li>Pirce : {{service.price}}</li>
+      <li>Discription : {{service.discription}}</li>
+    </ul>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="editservice" value="{{Coustomer.id}}" />
+      <input type="hidden" name="deletingservice" value="{{service.id}}" />
+      <input class="sdelete" type="submit" value="press to delete" />
+    </form>
+  </div>
+  {% endfor %}
+</div>
+<hr />
+<h2>Other Services</h2>
+<div class="editCoustomerServices">
+  {% for service in OtherServices %}
+  <div class="editCoustomerServicesCell">
+    {{service.name}}
+    <ul>
+      <li>Pirce : {{service.price}}</li>
+      <li>Discription : {{service.discription}}</li>
+    </ul>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="editservice" value="{{Coustomer.id}}" />
+      <input type="hidden" name="addingService" value="{{service.id}}" />
+      <input class="sadd" type="submit" value="press to add" />
+    </form>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock otherpages %}

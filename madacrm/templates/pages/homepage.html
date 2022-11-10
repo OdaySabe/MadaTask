@@ -1,0 +1,40 @@
+{% extends 'mainpage.html' %} {% block otherpages %}
+<h1>home page</h1>
+
+<hr />
+<div class="coustomers">
+  {% for coustomer in coustomersDetails %}
+
+  <div class="coustomerdetails">
+    <h2>{{coustomer.cm.name}}</h2>
+    <p>{{coustomer.cm.age}} years old</p>
+    <p>Number {{coustomer.cm.phonenumber}}</p>
+    <p>lives in {{coustomer.cm.city}}</p>
+    <p>registered at {{coustomer.cm.registerdate}}</p>
+    <form action="/editcoustomer" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="edit" value="{{coustomer.cm.id}}" />
+      <input type="submit" value="Edit coustomer" />
+    </form>
+    <form action="/homepage" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="delete" value="{{coustomer.cm.id}}" />
+      <input type="submit" value="delete this coustomer" />
+    </form>
+    <div>
+      <h2>{{coustomer.cm.name}} services</h2>
+      {% for service in coustomer.coustomerServices %}
+      <p>{{service.name}}</p>
+      {% endfor %}
+
+      <form action="/editservices" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="editservice" value="{{coustomer.cm.id}}" />
+        <input type="submit" value="Edit coustomer services" />
+      </form>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock otherpages %}

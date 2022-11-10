@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/loginstyle.css'%}" />
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login page</h1>
+      <form action="/" method="POST">
+        <div class="inputbox">
+          {% csrf_token %}
+          <input type="text" name="username" required="required" />
+          <span>Email</span>
+        </div>
+        <div class="inputbox">
+          <input type="password" name="password" required="required" />
+          <span>Password</span>
+        </div>
+        <div class="inputbox">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
+      <h1>{{message}}</h1>
+    </div>
+  </body>
+</html>
+
+{% comment %}
+<div class="center">
+  <h1>Our Newsletter</h1>
+  <form>
+    <div class="inputbox">
+      ---
+      <input type="text" required="required" />
+      <span>Email</span>
+    </div>
+    <div class="inputbox">
+      <input type="text" required="required" />
+      <span>Password</span>
+    </div>
+    <div class="inputbox">
+      <input type="button" value="submit" />
+    </div>
+  </form>
+</div>
+{% endcomment %}

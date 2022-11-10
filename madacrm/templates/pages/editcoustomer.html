@@ -1,0 +1,13 @@
+{% extends 'mainpage.html' %} {% block otherpages %}
+<h1>edit coustomer</h1>
+<form action="/editcoustomer" method="POST" class="addCoustomer">
+  {% csrf_token %}
+  <input type="hidden" name="thisCoustomer" value="{{coustomer.id}}" />
+  <input type="text" value="{{coustomer.name}}" name="name" />
+  <input type="number" value="{{coustomer.age}}" name="age" />
+  <input type="text" value="{{coustomer.phonenumber}}" name="phonenumber" />
+  <input type="text" value="{{coustomer.city}}" name="city" />
+  <input type="date" value="{{coustomer.registerdate}}" name="registerdate" />
+  <input type="submit" value="Complete Edit" />
+</form>
+{% endblock otherpages%}

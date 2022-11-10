@@ -1,0 +1,23 @@
+{% extends 'mainpage.html' %} {% block otherpages %}
+<h1>Add new Coustomer</h1>
+<h1>Add new Coustomer</h1>
+<form action="/addcoustomer" method="POST" class="addCoustomer">
+  {% csrf_token %}
+  <input placeholder="Coustomer Name" type="text" name="name" />
+  <input placeholder="Coustomer Age" type="number" name="age" />
+  <input placeholder="Coustomer Phone number" type="text" name="phonenumber" />
+  <input placeholder="Coustomer City" type="text" name="city" />
+  <input
+    placeholder="Coustomer Register date"
+    type="date"
+    name="registerdate"
+  />
+  <select name="services">
+    {% for service in srs %}
+    <option value="{{service.name}}">{{service.name}}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Add coustomer" />
+</form>
+
+{% endblock otherpages %}

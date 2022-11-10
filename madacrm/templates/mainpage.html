@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+   <link rel="stylesheet" href="{% static 'css/navbar.css'%}"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    {% if login %}
+<div id="navlist">
+    <a href="{% url "mainpage" %}" >Home</a>
+    <a href="{% url "addcoustomer" %}" >add new coustomer</a>
+    <a href="{% url "listallservices" %}" >List all services</a>
+    <form action="/logout" method="GET">
+        {% csrf_token %}
+    <input type="submit" value="log out"/ class="search logout">
+    </form>
+    <div class="search">
+       
+        <form action="/homepage" method="GET">
+            <input type="text" name="searchname" placeholder="Search coustomer by name"/>
+            <input type="number" class="x" name="searchnumber" placeholder="Search coustomer by phone number"/>
+            <input class="fa fa-search y"
+            style="font-size: 18px;" type="submit" value="Search"/>
+        </form>
+    </div>
+</div>
+{% block otherpages %} {% endblock otherpages %}
+{% else %}
+<h1>You dont have permition </h1>
+{% endif %}
+    
+</body>
+</html>
+
+
+

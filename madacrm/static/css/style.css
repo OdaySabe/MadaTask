@@ -1,0 +1,10 @@
+body {
+  background-color: lightgray;
+}
+#navbar {
+  display: flex;
+  background-color: #0eb358;
+  font-size: 2rem;
+  height: 2.5rem;
+  padding: 10px;
+}
